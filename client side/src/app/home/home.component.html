@@ -1,0 +1,33 @@
+
+<div class = "container-fluid scroll">
+
+  <div class = "row">
+  <div class = "col-md-2">
+  <div *ngFor="let catfilter of categories; let i = index;" class="form-check" style="padding-right:20px;">
+    <label class="form-check-label">
+      <input type="checkbox" class="form-check-input" [(ngModel)]="catfilter.checked" [value]="catfilter.checked"> {{catfilter.name}}
+    </label>
+</div>
+<pre>Selected items: <span *ngFor="let filterItem of checked()" style="padding-right:10px;">{{ filterItem.name}}</span></pre>
+
+</div>
+
+<div class = "col-md-10">
+  <input class="form-control" [(ngModel)]="searchText" type="text" placeholder="Search" aria-label="Search">
+
+      <div *ngFor="let product of products | filter : searchText : checked() : false | paginate: { itemsPerPage: 12, currentPage: p}">
+       <div *ngIf="product.markDelete == 0" class="col-md-3 productbox"> <a style= " color: inherit;text-decoration: none;" [routerLink]="['/productDetail/', product._id]"><div>
+            <img src="assets/images/{{product.pid}}.jpg" class="img-responsive" width=100 height=100>
+            <div class="producttitle">{{product.pname}}</div></div></a>
+            <div class="productprice"><div class="pull-right"><button [disabled]="loading" class="btn-light btn-sm" (click) = "addCart(product)">Save</button><a [routerLink]="['/updateProd/', product._id]"><button *ngIf="currentUser.isAdmin == 1" [disabled]="loading" class="btn-light btn-sm">Update</button></a><button *ngIf="currentUser.isAdmin == 1" (click) = "deleteProduct(product)" [disabled]="loading" class="btn-danger btn-sm">Delete</button></div><div class="pricetext">{{product.paddress}}</div></div>
+  </div>
+  </div>
+
+     
+
+
+  <div style="clear: left;">
+  <pagination-controls (pageChange)="p = $event" style="text-align: center;"></pagination-controls>
+</div>
+</div>
+

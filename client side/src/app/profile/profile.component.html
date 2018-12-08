@@ -1,0 +1,73 @@
+
+<div class="container-fluid">
+<h2>Edit Profile:</h2>
+<div class="user-profile">
+    
+    <div>
+        <label>First Name: </label>
+        <div><input name="firstName"  [(ngModel)] = "currentuser.firstName"></div>
+        
+    </div>
+    <div>
+        <label>Last Name: </label>
+        <div>
+        <input name="lastName"  [(ngModel)] = "currentuser.lastName"></div>
+        
+    </div>
+
+    <div>
+        <div><label>Email: </label></div>
+        <input name="contact" [(ngModel)] = "currentuser.contact">
+    </div>
+    
+    <div>
+        <div><label>Address: </label></div>
+        <input name="address" [(ngModel)] = "currentuser.address">
+    </div>
+
+    <div>
+    <button [disabled]="loading" class="btn btn-primary" id="profilesave" (click)="saveProfile()">Save</button></div>
+</div>
+
+
+<h2>Add Product:</h2>
+<div class="row user-profile" *ngIf="currentuser.isAdmin == 1">
+  <div>
+  
+  <div class="user-profile-name">
+      <div><label>Product id </label></div>
+      <input name="pid" [(ngModel)] = "this.product.pid">
+      
+  </div>
+  <div>
+      <div><label>Product Name: </label></div>
+      <input name="pname" [(ngModel)] = "this.product.pname">
+      {{product.pname}}
+  </div>
+
+  <div>
+      <div><label>Product Address: </label></div>
+      <input name="paddress"  [(ngModel)] = "product.paddress">
+  </div>
+
+  <div>
+      <div><label>Product Description: </label></div>
+      <input name="desc"  [(ngModel)] = "product.desc">
+  </div>
+
+  <div>
+      <div><label>Product Category ID</label></div>
+      <input name="categoryid"  [(ngModel)] = "product.categoryid">
+  </div>
+
+  <div>
+      <div><label>Product category name</label></div>
+      <input name="categoryname"  [(ngModel)] = "product.categoryname">
+  </div>
+
+  <button [disabled]="loading" class="btn btn-primary" (click)="create()">Add</button>
+
+</div>
+
+</div>
+</div>

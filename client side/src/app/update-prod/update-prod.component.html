@@ -1,0 +1,36 @@
+
+<div>
+  
+  <div class="user-profile-name">
+      <div><label>Product id </label></div>
+      <input name="pid" [(ngModel)] = "product.pid">
+  </div>
+  <div>
+      <div><label>Product Name: </label></div>
+      <input name="pname" [(ngModel)] = "product.pname">
+  </div>
+
+  <div>
+      <div><label>Product Address: </label></div>
+      <input name="paddress" type="text" [(ngModel)] = "product.paddress">
+  </div>
+
+  <div>
+      <div><label>Product Description: </label></div>
+      <input name="desc"  [(ngModel)] = "product.desc">
+  </div>
+
+  <div>
+      <div><label>Product Category ID</label></div>
+      <input name="pcategoryid" type="text" [(ngModel)] = "product.categoryid">
+  </div>
+
+  <div>
+      <div><label>Product category name</label></div>
+      <input name="pcategoryname" type="text" [(ngModel)] = "product.categoryname">
+  </div>
+
+
+  <button [disabled]="loading" class="btn btn-primary" (click)="update()">Update</button>
+
+</div>
